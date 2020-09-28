@@ -5,10 +5,12 @@ function NoMatch() {
     let location = useLocation();
 
     return (
-        <div>
-            <h3>
-                No match for <code>{location.pathname}</code>
+        <div className="container">
+            <div className="jumbotron bg-dark text-light">
+                <h3>
+                    Page <code>{location.pathname}</code> not found.
             </h3>
+            </div>
         </div>
     );
 }

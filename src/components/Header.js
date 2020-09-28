@@ -9,6 +9,7 @@ import logo from '../logo.svg';
 
 import Main from '../components/Main';
 import NoMatch from './NoMatch';
+import About from './About';
 
 function Header() {
     return (
@@ -25,7 +26,7 @@ function Header() {
                 <div className="collapse navbar-collapse" id="collapsibleNavbar">
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <Link className="nav-link" to="/">CV</Link>
+                            <Link className="nav-link" to="/about">About Me</Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to="/projects">Projects</Link>
@@ -33,10 +34,11 @@ function Header() {
                     </ul>
                 </div>
             </nav>
+            <br />
 
             <Switch>
                 <Route path="/about">
-                    {/* <About /> */}
+                    <About />
                 </Route>
                 <Route path="/users">
                     {/* <Users /> */}
