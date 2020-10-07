@@ -18,7 +18,7 @@ function Header() {
                 <h1>BGSystems's homepage</h1>
                 <p>Welcome! Welcome to my page.</p>
             </div>
-            <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
+            <nav className="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
                 <Link className="nav-link" to="/"><img src={logo} alt="Logo" style={{ width: 40 + 'px' }} /></Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                     <span className="navbar-toggler-icon"></span>

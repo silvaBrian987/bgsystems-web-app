@@ -38,32 +38,97 @@ const defaultCurriculum = {
                 'Designed and coded websites, from layout to function, according to client specifications'
             ]
         }
+    ],
+    specializations: [
+        'Web Design',
+        'Front-end and back-end coding',
+        'CI/CD pipelines',
+        'Custom databases',
+        'User Interface/User Experience',
+        'Design Thinking',
+        'Full Stack Web and Multiplatform Mobile App Development'
+    ],
+    contactInfo: {
+        telephone: '+54 011 1557424462',
+        email: 'silva.brian.987@gmail.com',
+        linkedin: '@briansilva',
+        address: 'Medrano 184, CABA, Argentina',
+        webpage: 'bgsystems.ml'
+    },
+    academicBackground: [
+        {
+            name: 'Game Developer',
+            institution: 'Universidad Abierta Interamericana',
+            period: {
+                from: '2016',
+                to: 'Present'
+            },
+            items: [
+                'Game develoment with Unity, Blender, Reaper',
+                'Minecraft map design'
+            ]
+        },
+        {
+            name: 'Computer Technician',
+            institution: 'Escuela Tecnica N° 29',
+            period: {
+                from: '2007',
+                to: '2012'
+            },
+            items: [
+                'GUI applications development with C#, VB6 and VFoxpro',
+                'Contability knowledge'
+            ]
+        }
+    ],
+    passionProjects: [
+        'Develop games',
+        'Being a youtuber',
+        'Maintain game servers'
     ]
 }
-
-const cvSectionTitleSeparatorStyle = { borderColor: aquaMarine, borderWidth: '4px' };
 
 function About() {
     const [curriculum, setCurriculum] = useState(defaultCurriculum);
     return (
-        <div className="container bg-dark" style={{ color: aquaMarine, marginBottom: '100px' }}>
-            <div className="row" style={{ marginLeft: '15px', paddingTop: '100px' }}>
+        <div className="container" class="cv-container">
+            <div className="row" style={{ padding: '100px' }}>
                 <div className="col-sm-5">
                     <div id="title" className="cv-section">
                         <div className="fakeimg"></div>
                         <h1 className="text-light">Brian Silva</h1>
                         <h5><i>DevOps Engineer</i></h5>
                     </div>
-                    <div id="careerObjectives" className="cv-section text-light">
+                    <div id="careerObjectives" className="cv-section">
                         <h5>Career Objectives</h5>
-                        <hr style={cvSectionTitleSeparatorStyle} />
+                        <hr />
                         <p>{curriculum.careerObjectives}</p>
+                    </div>
+                    <div id="specializations" className="cv-section">
+                        <h5>Specializations</h5>
+                        <hr />
+                        <ul>
+                            {
+                                curriculum.specializations.map(i => {
+                                    return <li>{i}</li>;
+                                })
+                            }
+                        </ul>
+                    </div>
+                    <div id="contactInfo" className="cv-section">
+                        <h5>Contact Info</h5>
+                        <hr />
+                        <p>Telephone: {curriculum.contactInfo.telephone}</p>
+                        <p>Email: {curriculum.contactInfo.email}</p>
+                        <p>Linkedin: {curriculum.contactInfo.linkedin}</p>
+                        <p>{curriculum.contactInfo.address}</p>
+                        <p>{curriculum.contactInfo.webpage}</p>
                     </div>
                 </div>
                 <div className="col-sm-7">
                     <div id="workSummary" className="cv-section">
                         <h5>Work Summary</h5>
-                        <hr style={cvSectionTitleSeparatorStyle} />
+                        <hr />
                         {
                             curriculum.workSummary.map(item => {
                                 return (
