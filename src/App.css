@@ -56,6 +56,10 @@
   margin-right: 75%;
 }
 
+.cv-container ul {
+  color: white;
+}
+
 .cv-section {
   margin-top: 10%;
 }

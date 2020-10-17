@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import printJS from 'print-js';
+import ReactToPrint from 'react-to-print';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPrint } from '@fortawesome/free-solid-svg-icons'
 
 const aquaMarine = 'rgb(41, 243, 195)';
 
@@ -91,13 +95,25 @@ const defaultCurriculum = {
 function About() {
     const [curriculum, setCurriculum] = useState(defaultCurriculum);
     return (
-        <div className="container" class="cv-container">
-            <div className="row" style={{ padding: '100px' }}>
+        <div className="container-fluid">
+            <div className="row">
+                <div className="col">
+                    <ReactToPrint
+                        trigger={() => {
+                            // NOTE: could just as easily return <SomeComponent />. Do NOT pass an `onClick` prop
+                            // to the root node of the returned component as it will be overwritten.
+                            return <button className="btn btn-primary" style={{width: '100%'}} ><FontAwesomeIcon icon={faPrint} /> Print this out!</button>;
+                        }}
+                        content={() => document.getElementById('cvContainer')}
+                    />
+                </div>
+            </div>
+            <div id="cvContainer" className="container cv-container row" style={{ padding: '100px' }}>
                 <div className="col-sm-5">
                     <div id="title" className="cv-section">
                         <div className="fakeimg"></div>
-                        <h1 className="text-light">Brian Silva</h1>
-                        <h5><i>DevOps Engineer</i></h5>
+                        <h1 className="text-light">{curriculum.name}</h1>
+                        <h4><i>{curriculum.position}</i></h4>
                     </div>
                     <div id="careerObjectives" className="cv-section">
                         <h5>Career Objectives</h5>
@@ -109,8 +125,8 @@ function About() {
                         <hr />
                         <ul>
                             {
-                                curriculum.specializations.map(i => {
-                                    return <li>{i}</li>;
+                                curriculum.specializations.map((item, key) => {
+                                    return <li key={key}>{item}</li>;
                                 })
                             }
                         </ul>
@@ -130,16 +146,16 @@ function About() {
                         <h5>Work Summary</h5>
                         <hr />
                         {
-                            curriculum.workSummary.map(item => {
+                            curriculum.workSummary.map((item, key) => {
                                 return (
-                                    <div>
-                                        <h6>{item.position.toUpperCase()}</h6>
-                                        <h7>{item.employee} | {item.period.from} - {item.period.to}</h7>
+                                    <div key={key}>
+                                        <h5>{item.position.toUpperCase()}</h5>
+                                        <h6>{item.employee} | {item.period.from} - {item.period.to}</h6>
                                         <ul className="text-light">
                                             {
-                                                item.tasks.map(task => {
+                                                item.tasks.map((task, key) => {
                                                     return (
-                                                        <li>{task}</li>
+                                                        <li key={key}>{task}</li>
                                                     )
                                                 })
                                             }
@@ -148,6 +164,40 @@ function About() {
                                 );
                             })
                         }
+                    </div>
+                    <div id="academicBackground" className="cv-section">
+                        <h5>Academic Background</h5>
+                        <hr />
+                        {
+                            curriculum.academicBackground.map((item, key) => {
+                                return (
+                                    <div key={key}>
+                                        <h5>{item.name.toUpperCase()}</h5>
+                                        <h6>{item.institution} | {item.period.from} - {item.period.to}</h6>
+                                        <ul className="text-light">
+                                            {
+                                                item.items.map((item, key) => {
+                                                    return (
+                                                        <li key={key}>{item}</li>
+                                                    )
+                                                })
+                                            }
+                                        </ul>
+                                    </div>
+                                );
+                            })
+                        }
+                    </div>
+                    <div id="passionProjects" className="cv-section">
+                        <h5>Passion Projects</h5>
+                        <hr />
+                        <ul>
+                            {
+                                curriculum.passionProjects.map((item, key) => {
+                                    return <li key={key}>{item}</li>;
+                                })
+                            }
+                        </ul>
                     </div>
                 </div>
             </div>
