@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d255e4fa-fbc4-479a-b0ef-5caf42cc79ff/deploy-status)](https://app.netlify.com/sites/vigorous-newton-322caa/deploys)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

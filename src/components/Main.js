@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const defaultNews = [
     {
@@ -11,7 +11,12 @@ const defaultNews = [
 ]
 
 function Main() {
-    const [news, setNews] = useState(defaultNews);
+    const [news, setNews] = useState({});
+
+    useEffect(() => {
+        setNews(defaultNews);
+    }, []);
+
     return (
         <div className="container">
             <div className="row" style={{ marginTop: '30px' }}>

@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
-import printJS from 'print-js';
+import React, { useEffect, useState } from 'react';
 import ReactToPrint from 'react-to-print';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPrint } from '@fortawesome/free-solid-svg-icons'
-
-const aquaMarine = 'rgb(41, 243, 195)';
 
 const defaultCurriculum = {
     name: 'Brian Silva',
@@ -93,7 +90,11 @@ const defaultCurriculum = {
 }
 
 function About() {
-    const [curriculum, setCurriculum] = useState(defaultCurriculum);
+    const [curriculum, setCurriculum] = useState({});
+    useEffect(()=>{
+        setCurriculum(defaultCurriculum);
+    }, []);
+    
     return (
         <div className="container-fluid">
             <div className="row">
