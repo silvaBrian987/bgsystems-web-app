@@ -11,7 +11,7 @@ const defaultNews = [
 ]
 
 function Main() {
-    const [news, setNews] = useState({});
+    const [news, setNews] = useState([]);
 
     useEffect(() => {
         setNews(defaultNews);
